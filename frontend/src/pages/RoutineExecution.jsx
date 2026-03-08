@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import '../pages/PatientDetails.css';
+import './PatientDetails.css';
 import './Forms.css';
 
 export default function RoutineExecution() {
@@ -8,7 +8,7 @@ export default function RoutineExecution() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/paciente/detalhes');
+    navigate('/paciente/rotinas');
   };
 
   return (

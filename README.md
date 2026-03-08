@@ -77,3 +77,53 @@ Com ambos os terminais rodando:
 
 - **Parando os servidores:** Para desligar os servidores locais, vá no terminal correspondente e pressione `Ctrl + C`, e depois `S` (ou `Y`) para confirmar.
 - O banco de dados (`caretrack.sqlite`) já fica embutido na pasta backend, então você não precisa configurar servidores externos (como MySQL ou PostgreSQL). Tudo fica arquivado localmente.
+
+---
+
+## Patch de atualização 1.01
+
+**Data:** Março 2025
+
+### Rotas e navegação
+
+- **Nova rota `/paciente/rotinas`** – Criada página PatientRoutines para exibir rotinas por paciente (antes o link causava 404).
+- **Links corrigidos** – ObservationRegistry, RoutineExecution e MedicalRecord passaram a redirecionar para rotas existentes (`/pacientes` ou `/paciente/rotinas`) em vez de `/paciente/detalhes` sem ID.
+- **Sidebar** – Removido item redundante "Detalhes do Paciente" que apontava para rota inexistente.
+- **Header** – Ajustado para exibir "Detalhes do Paciente" corretamente em rotas como `/paciente/detalhes/123`.
+
+### Tratamento de erros e lógica
+
+- **PatientList** – Adicionado tratamento de erros da API para evitar crash quando o backend não responde ou retorna erro (antes gerava "map is not a function").
+- **PatientList** – Correção para `priority` null/undefined (`(p.priority || 'Estável').toUpperCase()`).
+- **PatientDetails** – Passou a usar URL da API configurável via `config.js`.
+
+### Integração com API
+
+- **ProcedureRegistration** – Formulário conectado a `POST /api/routines`, com seleção de paciente e envio de dados.
+- **ObservationRegistry** – Formulário conectado à nova rota `POST /api/observations`, com seleção de paciente.
+- **Backend** – Nova rota `POST /api/observations` para registrar observações clínicas.
+
+### Configuração
+
+- **config.js** – Criado arquivo de configuração com `API_BASE_URL`. Em produção, defina `VITE_API_URL` em `.env`.
+- **Backend** – Scripts `start` e `seed` adicionados ao `package.json` (`npm start`, `npm run seed`).
+- **Dashboard** – Botões "Ver Detalhes" passaram a ser links funcionais para os pacientes em prioridade.
+
+### Arquivos modificados
+
+| Arquivo | Alteração |
+|---------|-----------|
+| `frontend/src/App.jsx` | Rota `paciente/rotinas` + import PatientRoutines |
+| `frontend/src/config.js` | Novo arquivo – URL da API |
+| `frontend/src/pages/PatientList.jsx` | Tratamento de erro, `priority` null-safe, uso de config |
+| `frontend/src/pages/PatientDetails.jsx` | Uso de config |
+| `frontend/src/pages/PatientRoutines.jsx` | Novo componente – listagem de rotinas |
+| `frontend/src/pages/ProcedureRegistration.jsx` | Integração com POST /api/routines |
+| `frontend/src/pages/ObservationRegistry.jsx` | Integração com POST /api/observations |
+| `frontend/src/pages/RoutineExecution.jsx` | Links corrigidos |
+| `frontend/src/pages/MedicalRecord.jsx` | Link corrigido |
+| `frontend/src/pages/Dashboard.jsx` | Links nos botões "Ver Detalhes" |
+| `frontend/src/components/Sidebar.jsx` | Item redundante removido |
+| `frontend/src/components/Header.jsx` | Título dinâmico para rotas com parâmetro |
+| `backend/server.js` | Nova rota POST /api/observations |
+| `backend/package.json` | Scripts start e seed |
