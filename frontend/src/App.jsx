@@ -11,6 +11,7 @@ import Settings from './pages/Settings';
 import UserProfile from './pages/UserProfile';
 import SystemAlerts from './pages/SystemAlerts';
 import ProcedureRegistration from './pages/ProcedureRegistration';
+import PatientRoutines from './pages/PatientRoutines';
 import ClinicalHistory from './pages/ClinicalHistory';
 import OperationalReports from './pages/OperationalReports';
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="pacientes" element={<PatientList />} />
           <Route path="paciente/detalhes/:id" element={<PatientDetails />} />
+          <Route path="paciente/rotinas" element={<PatientRoutines />} />
           <Route path="prontuario" element={<MedicalRecord />} />
           <Route path="execucao" element={<RoutineExecution />} />
           <Route path="observacao" element={<ObservationRegistry />} />

@@ -5,8 +5,8 @@ import '../pages/PatientDetails.css';
 export default function MedicalRecord() {
   return (
     <div className="patient-details-container">
-      <Link to="/paciente/detalhes" className="back-link">
-        <ArrowLeft size={16} /> Voltar para Detalhes
+      <Link to="/pacientes" className="back-link">
+        <ArrowLeft size={16} /> Voltar para Lista de Pacientes
       </Link>
       
       <div className="patient-header" style={{ alignItems: 'center' }}>

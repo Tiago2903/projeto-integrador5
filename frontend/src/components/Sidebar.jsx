@@ -8,7 +8,6 @@ import './Sidebar.css';
 const navItems = [
   { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { path: '/pacientes', label: 'Lista de Pacientes', icon: Users },
-  { path: '/paciente/detalhes', label: 'Detalhes do Paciente', icon: UserCheck },
   { path: '/paciente/rotinas', label: 'Rotinas do Paciente', icon: ClipboardList },
   { path: '/execucao', label: 'Execução de Rotina', icon: PlayCircle },
   { path: '/observacao', label: 'Registrar Observação', icon: FileEdit },

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 import './PatientDetails.css';
 
 export default function PatientDetails() {
@@ -9,7 +10,7 @@ export default function PatientDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/patients/${id}`)
+    fetch(`${API_BASE_URL}/api/patients/${id}`)
       .then(res => res.json())
       .then(data => {
         setPatient(data);

@@ -5,7 +5,6 @@ import './Header.css';
 const routeNames = {
   '/dashboard': 'Dashboard',
   '/pacientes': 'Lista de Pacientes',
-  '/paciente/detalhes': 'Detalhes do Paciente',
   '/paciente/rotinas': 'Rotinas do Paciente',
   '/execucao': 'Execução de Rotina',
   '/observacao': 'Registrar Observação',
@@ -14,12 +13,18 @@ const routeNames = {
   '/cadastro': 'Cadastro Procedimento',
   '/perfil': 'Perfil do Usuário',
   '/relatorios': 'Relatórios Operacionais',
-  '/configuracoes': 'Configurações'
+  '/configuracoes': 'Configurações',
+  '/alertas': 'Alertas do Sistema'
 };
+
+function getTitle(pathname) {
+  if (pathname.startsWith('/paciente/detalhes')) return 'Detalhes do Paciente';
+  return routeNames[pathname] || 'CareTrack';
+}
 
 export default function Header() {
   const location = useLocation();
-  const title = routeNames[location.pathname] || 'CareTrack';
+  const title = getTitle(location.pathname);
 
   return (
     <header className="header">
