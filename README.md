@@ -117,7 +117,7 @@ Com ambos os terminais rodando:
 | `frontend/src/config.js` | Novo arquivo – URL da API |
 | `frontend/src/pages/PatientList.jsx` | Tratamento de erro, `priority` null-safe, uso de config |
 | `frontend/src/pages/PatientDetails.jsx` | Uso de config |
-| `frontend/src/pages/PatientRoutines.jsx` | Novo componente – listagem de rotinas |
+| `frontend/src/pages/PatientRoutines.jsx` | Novo componente – listagem de rotinas dos Pacientes |
 | `frontend/src/pages/ProcedureRegistration.jsx` | Integração com POST /api/routines |
 | `frontend/src/pages/ObservationRegistry.jsx` | Integração com POST /api/observations |
 | `frontend/src/pages/RoutineExecution.jsx` | Links corrigidos |
